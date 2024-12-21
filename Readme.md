@@ -136,3 +136,15 @@ https://mongoosejs.com/docs/api/query.html#Query.prototype.sort()
 ```
 https://mongoosejs.com/docs/api/query.html#Query.prototype.select()
 ```
+
+## Hash Password /\ install bcrypt
+
+```
+npm i bcrypt
+```
+
+## Install Process JWT Json Web Token
+
+```
+npm install jsonwebtoken
+```
