@@ -1,3 +1,4 @@
+import config from "../../config";
 import { IUser } from "../user/user.interface";
 import { User } from "../user/user.model";
 import bcrypt from "bcrypt"
@@ -9,6 +10,10 @@ const register = async (payload: IUser) => {
 }
 
 const login = async (payload: ILoginUser) => {
+
+
+    // const user = await User.isUserExistsById(_id);
+
     const user = await User.findOne({ email: payload?.email }).select("+password")
 
     if (!user) {
@@ -28,7 +33,8 @@ const login = async (payload: ILoginUser) => {
     }
 
 
-    const token = jwt.sign({ email: user?.email, role: user?.role }, "secret", { expiresIn: "30d" })
+    const token = jwt.sign({ _id: user._id, email: user.email, role: user.role }, config.jwt_access_secret as string, { expiresIn: "30d" })
+    // console.log("sign Token : ", token);
 
     const { password, ...remanningData } = user;
 

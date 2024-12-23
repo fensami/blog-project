@@ -12,3 +12,6 @@ blogRoute.delete("/:id", auth("user"), blogControllers.deleteBlog)
 
 blogRoute.post("/", auth("user"), validateRequest(blogsValidationSchema.createBlogValidationSchema), blogControllers.createBlog)
 export default blogRoute;
+
+
+blogRoute.get("/", blogControllers.getAllBlog)

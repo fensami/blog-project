@@ -9,4 +9,11 @@ const authRoute = Router();
 authRoute.post("/register", validateRequest(userValidationSchema.createUserValidationSchema), AuthControllers.register)
 
 authRoute.post("/login", validateRequest(authValidation.loginValidationSchema), AuthControllers.login)
+
+
+// authRoute.post(""),,
+
+
+
+
 export default authRoute;

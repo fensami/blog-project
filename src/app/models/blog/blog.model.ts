@@ -20,5 +20,9 @@ const blogSchema = new Schema<IBlog>({
     timestamps: true
 })
 
+
+
+
+
 export const Blog = model<IBlog>("Blog", blogSchema)
 
