@@ -2,7 +2,6 @@ import app from './app';
 import mongoose from 'mongoose';
 import config from './app/config';
 import { Server } from 'http';
-// const mongoose = require('mongoose');
 let server: Server;
 
 async function main() {

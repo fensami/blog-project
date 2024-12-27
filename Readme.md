@@ -10,10 +10,10 @@ https://github.com/fensami/blog-project
 https://blog-project-flame-iota.vercel.app/
 ```
 
-## Video Explanation (Public Link)
+## Video Explanation (Public Drive Link)
 
 ```
-drive link
+https://drive.google.com/file/d/1D41IrcgzJfyUVZYRlNbeWRIY8bFTOucY/view?usp=sharing
 ```
 
 # Project Setup Important Links
