@@ -3,6 +3,8 @@ import authRoute from "../models/auth/auth.route";
 import userRoute from "../models/user/user.route";
 import blogRoute from "../models/blog/blog.route";
 
+
+
 const router = Router()
 
 
@@ -12,7 +14,7 @@ const moudulesRoute = [
         route: authRoute
     },
     {
-        path: "/user",
+        path: "/",
         route: userRoute
     },
     {

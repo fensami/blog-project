@@ -35,7 +35,6 @@ class QueryBuilder<T> {
 
         this.modelQuery = this.modelQuery.find(queryObj as FilterQuery<T>)
 
-        // console.log({ query }, { queryObj });
         return this
     }
 

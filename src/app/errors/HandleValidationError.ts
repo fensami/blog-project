@@ -1,5 +1,3 @@
-// import mongoose from "mongoose";
-
 import mongoose from "mongoose"
 import { TErrorSources, TGenericErrorResponse } from "../interface/error"
 
@@ -13,13 +11,13 @@ const handleValidationError = (err: mongoose.Error.ValidationError): TGenericErr
                 message: val?.message
             }
         })
+
     const statusCode = 400;
 
     return {
         statusCode,
         message: "validation Error",
         errorSources,
-
     }
 }
 export default handleValidationError

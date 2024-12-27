@@ -4,7 +4,12 @@ import auth from "../../middlewares/auth";
 
 const userRoute = Router();
 
+userRoute.get("/users", auth("user", "admin"), userController.getAllUser)
+
+userRoute.patch("/admin/users/:id/block", auth("admin"), userController.adminBlockedUser)
+
+userRoute.delete('/admin/blogs/:id', auth("admin"), userController.adminCanDeleteAnyBlog)
 
 
-userRoute.get("/", auth("user", "admin"), userController.getAllUser)
+
 export default userRoute;

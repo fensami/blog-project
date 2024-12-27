@@ -1,3 +1,23 @@
+## GitHub Repository
+
+```
+https://github.com/fensami/blog-project
+```
+
+## Live Deployment
+
+```
+https://blog-project-flame-iota.vercel.app/
+```
+
+## Video Explanation (Public Link)
+
+```
+drive link
+```
+
+# Project Setup Important Links
+
 ## Express Init Tarminal
 
 ```

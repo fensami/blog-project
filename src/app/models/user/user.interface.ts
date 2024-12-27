@@ -9,7 +9,5 @@ export interface IUser {
 }
 
 export interface UserModel extends Model<IUser> {
-    // myStaticMethod(): number;
     isUserExistsById(_id: string): Promise<IUser>
-    // isPasswordMatched(plainTextPassword: string, hashedPassword: string): Promise<boolean>
 }

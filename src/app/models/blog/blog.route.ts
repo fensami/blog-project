@@ -8,10 +8,10 @@ const blogRoute = Router();
 
 blogRoute.patch("/:id", auth("user"), validateRequest(blogsValidationSchema.updateBlogValidationSchema), blogControllers.updateBlog)
 
-blogRoute.delete("/:id", auth("user"), blogControllers.deleteBlog)
+blogRoute.delete("/:id", auth("user", "admin"), blogControllers.deleteBlog)
 
 blogRoute.post("/", auth("user"), validateRequest(blogsValidationSchema.createBlogValidationSchema), blogControllers.createBlog)
 export default blogRoute;
 
 
-blogRoute.get("/", blogControllers.getAllBlog)
+blogRoute.get("/", blogControllers.getAllBlog);

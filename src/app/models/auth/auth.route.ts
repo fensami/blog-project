@@ -11,9 +11,4 @@ authRoute.post("/register", validateRequest(userValidationSchema.createUserValid
 authRoute.post("/login", validateRequest(authValidation.loginValidationSchema), AuthControllers.login)
 
 
-// authRoute.post(""),,
-
-
-
-
 export default authRoute;

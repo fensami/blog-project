@@ -8,6 +8,7 @@ const loginValidationSchema = z.object({
 })
 
 
+
 export const authValidation = {
     loginValidationSchema
 }

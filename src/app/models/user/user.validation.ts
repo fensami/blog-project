@@ -13,6 +13,17 @@ const createUserValidationSchema = z.object({
 })
 
 
+const adminUpdateIsblockedValidationSchema = z.object({
+    body: z.object({
+        isBlocked: z.boolean().refine(value => typeof value === 'boolean', {
+            message: 'isBlocked must be a boolean value',
+        }),
+        // isBlocked: z.boolean(),
+    })
+})
+
+
 export const userValidationSchema = {
-    createUserValidationSchema
+    createUserValidationSchema,
+    adminUpdateIsblockedValidationSchema
 }

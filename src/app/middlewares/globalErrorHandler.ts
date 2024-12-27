@@ -27,8 +27,6 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
         statusCode = simgplifiedError?.statusCode;
         message = simgplifiedError?.message;
         errorSources = simgplifiedError?.errorSources;
-        // message: "ami zod error"
-        // console.log(simgplifiedError);
 
     } else if (err?.name === "ValidationError") {
         const simgplifiedError = handleValidationError(err);
@@ -41,13 +39,11 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
         statusCode = simgplifiedError?.statusCode;
         message = simgplifiedError?.message;
         errorSources = simgplifiedError?.errorSources;
-        // console.log(simgplifiedError);
     } else if (err?.code === 11000) {
         const simgplifiedError = handleDuplicateError(err);
         statusCode = simgplifiedError?.statusCode;
         message = simgplifiedError?.message;
         errorSources = simgplifiedError?.errorSources;
-        // console.log(simgplifiedError);
     } else if (err instanceof AppError) {
         statusCode = err?.statusCode;
         message = err?.message;
@@ -69,7 +65,6 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
         success: false,
         message,
         errorSources,
-        // err,
         stack: config.NODE_ENV === "development" ? err?.stack : null
     })
 

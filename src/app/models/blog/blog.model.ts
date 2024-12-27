@@ -1,7 +1,5 @@
-
 import { IBlog } from "./blog.interface"
 import { model, Schema } from "mongoose"
-
 
 const blogSchema = new Schema<IBlog>({
     title: {
@@ -19,9 +17,6 @@ const blogSchema = new Schema<IBlog>({
 }, {
     timestamps: true
 })
-
-
-
 
 
 export const Blog = model<IBlog>("Blog", blogSchema)

@@ -1,4 +1,3 @@
-import { error, log } from "console"
 import catchAsync from "../../utils/catchAsync"
 import sendResponse from "../../utils/sendResponse"
 import { blogServices } from "./blog.service"
@@ -10,6 +9,7 @@ const createBlog = catchAsync(async (req, res,) => {
 
     const authorId = req.user?._id;
 
+
     if (!authorId) {
         throw new Error("User not authenticated");
     }
@@ -19,23 +19,19 @@ const createBlog = catchAsync(async (req, res,) => {
         author: authorId,
     };
 
-    // const result = await blogServices.createBlogIntoDB(req.body)
     const result = await blogServices.createBlogIntoDB(blogPayload)
 
-    console.log(result);
-
-
     sendResponse(res, {
-        statusCode: 200,
+        statusCode: 201,
         success: true,
         message: "Blog is created successfully",
-        data: result
-        // data: {
-        //     _id: blogData._id,
-        //     title: blogData.title,
-        //     content: blogData.content,
-        //     author: authorData,
-        // }
+        data: {
+            _id: result._id,
+            title: result.title,
+            content: result.content,
+            author: result.author
+
+        }
     })
 
 })
@@ -43,27 +39,21 @@ const createBlog = catchAsync(async (req, res,) => {
 
 const updateBlog = catchAsync(async (req, res) => {
 
-    // const authorId = req.user?._id;
-
-    // if (!authorId) {
-    //     throw new Error("User not authenticated");
-    // }
-    // const userId = req.user;
-    // console.log("USer Id", userId);
-
-
     const { id } = req.params;
-    const { updateBlogData, authorData } = await blogServices.updateBlogIntoDB(id, req.body);
+    const userId = req.user?._id;
+
+    const result = await blogServices.updateBlogIntoDB(id, req.body, userId);
+
 
     sendResponse(res, {
         statusCode: 200,
         success: true,
         message: 'Blog is updated succesfully',
         data: {
-            _id: updateBlogData?._id,
-            title: updateBlogData?.title,
-            content: updateBlogData?.content,
-            author: authorData,
+            _id: result?._id,
+            title: result?.title,
+            content: result?.content,
+            author: result?.author
         }
     });
 });
@@ -72,8 +62,9 @@ const updateBlog = catchAsync(async (req, res) => {
 const deleteBlog = catchAsync(async (req, res) => {
 
     const { id } = req.params;
+    const userId = req.user?._id;
 
-    const result = await blogServices.deleteBlogIntoDB(id);
+    const result = await blogServices.deleteBlogIntoDB(id, userId);
 
     sendResponse(res, {
         success: true,
@@ -85,14 +76,13 @@ const deleteBlog = catchAsync(async (req, res) => {
 
 const getAllBlog = catchAsync(async (req, res) => {
 
-    console.log(req.user);
 
     const result = await blogServices.getAllBlogFromDb(req.query);
 
     sendResponse(res, {
         statusCode: 500,
         success: true,
-        message: "All Blog Showing Succesfully",
+        message: "Blogs fetched successfully",
         data: result
     })
 })

@@ -6,5 +6,3 @@ export interface IBlog {
     author: Types.ObjectId;
     isPublished: boolean;
 }
-//Default is true (published)
-//A reference to the User model, indicating the author of the blog post
